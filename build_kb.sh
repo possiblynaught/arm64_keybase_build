@@ -27,6 +27,7 @@ sudo apt update && sudo apt install yarn -y
 
 # Enter the client dir and try to build
 cd "$CLIENT_DIR"
+#export KEYBASE_NO_GUI=1 # Uncomment this to try to disable electron build
 export KEYBASE_BUILD_ARM_ONLY=1
 "$CLIENT_DIR"/packaging/linux/build_binaries.sh prerelease "$BUILD_DIR"
 FINAL_DIR="$BUILD_DIR/binaries/arm64/opt/keybase"
