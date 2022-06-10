@@ -9,6 +9,10 @@ set -Eeuo pipefail
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
 MAIN_DIR="$(dirname "$SCRIPT_DIR")"
 
+# Install dependencies
+sudo apt update
+sudo apt install git golang docker fuse gconf-service patch libxss-dev npm build-essential libgtk2.0-dev -y
+
 # Clone the repos
 cd "$MAIN_DIR"
 git clone https://github.com/keybase/client.git
@@ -16,9 +20,6 @@ git clone https://github.com/keybase/kbfs.git
 CLIENT_DIR="$MAIN_DIR/client"
 BUILD_DIR="$MAIN_DIR/keybase_build"
 
-# Install dependencies
-sudo apt update
-sudo apt install golang docker fuse gconf-service patch libxss-dev npm build-essential libgtk2.0-dev -y
 # Install new version of yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
