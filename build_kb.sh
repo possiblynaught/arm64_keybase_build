@@ -37,5 +37,7 @@ if [[ ! -f "$FINAL_DIR/post_install.sh" ]]; then
 else
   cd "$FINAL_DIR"
   ./post_install.sh
+  cd "$BUILD_DIR/binaries/arm64/usr/bin"
+  ./keybase version
 fi
 
