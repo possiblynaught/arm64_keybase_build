@@ -15,8 +15,8 @@ sudo apt install git golang docker fuse gconf-service patch libxss-dev npm build
 
 # Clone the repos
 cd "$MAIN_DIR"
-git clone https://github.com/keybase/client.git
-git clone https://github.com/keybase/kbfs.git
+git clone https://github.com/keybase/client.git || true
+git clone https://github.com/keybase/kbfs.git || true
 CLIENT_DIR="$MAIN_DIR/client"
 BUILD_DIR="$MAIN_DIR/keybase_build"
 
@@ -36,7 +36,7 @@ if [[ ! -f "$FINAL_DIR/post_install.sh" ]]; then
   exit
 else
   cd "$FINAL_DIR"
-  ./post_install.sh
+  ./post_install.sh || true
   cd "$BUILD_DIR/binaries/arm64/usr/bin"
   ./keybase version
 fi
